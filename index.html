@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>跑酷穿越挑战</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <video
+      class="page-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      aria-label="主页背景视频"
+      poster="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1400&q=80"
+    >
+      <source
+        src="https://cdn.pixabay.com/video/2019/05/26/23969-338327820_large.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <div class="page-mask" aria-hidden="true"></div>
+
+    <main class="game-shell">
+      <h1>🏃 跑酷穿越挑战</h1>
+      <p class="subtitle">跳跃躲避障碍，跑得越久分数越高！</p>
+
+      <section class="panel">
+        <div class="stats">
+          <span>当前分数：<strong id="score">0</strong></span>
+          <span>已跨越障碍：<strong id="passed">0</strong></span>
+          <span>最高分：<strong id="best">0</strong></span>
+        </div>
+        <button id="startBtn" class="start-btn">开始跑酷</button>
+      </section>
+
+      <section id="arena" class="arena" aria-label="跑酷游戏区域">
+        <div id="runner" class="runner" aria-label="跑酷角色"></div>
+        <div class="ground" aria-hidden="true"></div>
+        <p id="hint" class="hint">按空格键（或点击游戏区域）跳跃，避开障碍物。</p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
