@@ -1,14 +1,12 @@
 :root {
   color-scheme: dark;
-  --text: #f9fafb;
-  --panel: rgb(17 24 39 / 70%);
+  --text: #f8fafc;
+  --panel: rgb(15 23 42 / 72%);
   --accent: #22d3ee;
-  --danger: #f97316;
+  --warn: #fb923c;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -21,10 +19,7 @@ body {
 }
 
 .page-video,
-.page-mask {
-  position: fixed;
-  inset: 0;
-}
+.page-mask { position: fixed; inset: 0; }
 
 .page-video {
   width: 100%;
@@ -34,59 +29,73 @@ body {
 }
 
 .page-mask {
-  background: linear-gradient(rgb(2 6 23 / 50%), rgb(2 6 23 / 78%));
+  background: linear-gradient(rgb(2 6 23 / 52%), rgb(2 6 23 / 80%));
   z-index: -1;
 }
 
-.game-shell {
-  width: min(94vw, 860px);
-}
-
-h1 {
-  margin-bottom: 0.35rem;
-}
-
-.subtitle {
-  margin-top: 0;
-  opacity: 0.95;
-}
+.game-shell { width: min(95vw, 980px); }
+h1 { margin-bottom: 0.25rem; }
+.subtitle { margin-top: 0; opacity: 0.96; }
 
 .panel {
   background: var(--panel);
   border: 1px solid rgb(148 163 184 / 30%);
   border-radius: 14px;
-  padding: 0.9rem 1rem;
+  padding: 0.8rem 1rem;
   backdrop-filter: blur(4px);
+  margin-bottom: 0.8rem;
+}
+
+.stats { display: flex; flex-wrap: wrap; gap: 1rem; }
+.actions { display: flex; gap: 0.6rem; }
+
+.panel:first-of-type {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
 
-.stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.start-btn {
+button {
   border: none;
   border-radius: 999px;
-  background: var(--accent);
-  color: #06202a;
-  font-weight: 800;
-  padding: 0.6rem 1rem;
+  padding: 0.55rem 0.95rem;
+  font-weight: 700;
   cursor: pointer;
 }
 
+.start-btn { background: var(--accent); color: #052028; }
+.mute-btn { background: #334155; color: #e2e8f0; }
+
+.config-panel h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.config-row {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 0.4rem;
+}
+
+.config-row input {
+  flex: 1;
+  border: 1px solid rgb(100 116 139 / 70%);
+  background: rgb(15 23 42 / 75%);
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 0.5rem 0.65rem;
+}
+
+.config-row button { background: #0ea5e9; color: #03202c; }
+
 .arena {
   position: relative;
-  margin-top: 1rem;
-  height: min(62vh, 450px);
+  height: min(58vh, 430px);
   border-radius: 18px;
   border: 2px solid rgb(125 211 252 / 45%);
   overflow: hidden;
-  background: linear-gradient(120deg, #0f172a, #1d4ed8);
+  background: linear-gradient(130deg, #0f172a, #1d4ed8);
   background-size: cover;
   background-position: center;
 }
@@ -95,34 +104,32 @@ h1 {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgb(2 6 23 / 34%), rgb(2 6 23 / 55%));
+  background: linear-gradient(rgb(2 6 23 / 30%), rgb(2 6 23 / 48%));
 }
 
 .runner,
 .obstacle,
 .hint,
-.ground {
-  position: absolute;
-}
+.ground { position: absolute; z-index: 2; }
 
 .runner {
-  left: 90px;
-  bottom: 48px;
-  width: 52px;
-  height: 52px;
+  width: 54px;
+  height: 78px;
+  object-fit: cover;
   border-radius: 14px;
-  background: linear-gradient(145deg, #34d399, #10b981);
-  box-shadow: 0 6px 14px rgb(0 0 0 / 36%);
-  z-index: 2;
+  left: 96px;
+  bottom: 48px;
+  border: 2px solid rgb(226 232 240 / 60%);
+  box-shadow: 0 7px 16px rgb(0 0 0 / 35%);
 }
 
 .obstacle {
-  bottom: 48px;
-  width: 38px;
-  border-radius: 10px;
-  background: linear-gradient(180deg, #fb923c, var(--danger));
+  width: 42px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid rgb(248 250 252 / 55%);
   box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
-  z-index: 2;
 }
 
 .ground {
@@ -131,31 +138,32 @@ h1 {
   background: repeating-linear-gradient(
     90deg,
     rgb(15 23 42 / 90%) 0,
-    rgb(15 23 42 / 90%) 35px,
-    rgb(30 41 59 / 90%) 35px,
-    rgb(30 41 59 / 90%) 70px
+    rgb(15 23 42 / 90%) 32px,
+    rgb(30 41 59 / 90%) 32px,
+    rgb(30 41 59 / 90%) 64px
   );
-  border-top: 2px dashed rgb(226 232 240 / 30%);
+  border-top: 2px dashed rgb(226 232 240 / 28%);
   z-index: 1;
 }
 
 .hint {
   inset: auto 0 12px;
-  text-align: center;
   margin: 0;
-  font-size: 0.95rem;
+  text-align: center;
+  font-size: 0.92rem;
   z-index: 3;
 }
 
-@media (max-width: 620px) {
-  .panel {
+@media (max-width: 760px) {
+  .panel:first-of-type,
+  .config-row {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
   }
 
   .runner {
-    left: 56px;
+    left: 60px;
     width: 46px;
-    height: 46px;
+    height: 68px;
   }
 }
