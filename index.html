@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D 跑酷穿越挑战 Pro</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <video id="pageVideo" class="page-video" autoplay muted loop playsinline aria-label="主页背景视频"></video>
+    <div class="page-mask" aria-hidden="true"></div>
+
+    <main class="game-shell" id="gameShell">
+      <h1>🏃 3D 跑酷穿越挑战 Pro</h1>
+      <p class="subtitle">本地资源驱动：视频、背景、障碍图均可从本地文件夹加载。</p>
+
+      <section class="panel top-panel">
+        <div class="stats">
+          <span>分数：<strong id="score">0</strong></span>
+          <span>跨越：<strong id="passed">0</strong></span>
+          <span>最高分：<strong id="best">0</strong></span>
+          <span>速度：<strong id="speedLabel">1.0x</strong></span>
+          <span>难度：<strong id="difficultyLabel">普通</strong></span>
+        </div>
+        <div class="actions">
+          <button id="startBtn">开始跑酷</button>
+          <button id="muteBtn">🔊 音效开</button>
+          <button id="fullscreenBtn">⛶ 全屏</button>
+        </div>
+      </section>
+
+      <section class="panel config-panel">
+        <h2>本地资源与参数设置</h2>
+        <div class="config-grid">
+          <label class="field">
+            <span>选择视频文件夹（MP4）</span>
+            <input id="videoFolderInput" type="file" accept="video/mp4" webkitdirectory multiple />
+          </label>
+          <label class="field">
+            <span>选择背景图片文件夹（JPG/PNG/WebP）</span>
+            <input id="bgFolderInput" type="file" accept="image/*" webkitdirectory multiple />
+          </label>
+          <label class="field">
+            <span>选择障碍图片文件夹（JPG/PNG/WebP）</span>
+            <input id="obstacleFolderInput" type="file" accept="image/*" webkitdirectory multiple />
+          </label>
+          <label class="field">
+            <span>跑酷人物动作图（可多选，用于奔跑帧）</span>
+            <input id="runnerFramesInput" type="file" accept="image/*" multiple />
+          </label>
+        </div>
+
+        <div class="config-grid sliders">
+          <label class="field">
+            <span>障碍速度倍率</span>
+            <input id="speedSlider" type="range" min="0.6" max="2.5" step="0.1" value="1" />
+          </label>
+          <label class="field">
+            <span>游戏难度</span>
+            <input id="difficultySlider" type="range" min="1" max="3" step="1" value="2" />
+          </label>
+          <label class="field">
+            <span>画面放大倍率</span>
+            <input id="zoomSlider" type="range" min="1" max="1.6" step="0.05" value="1" />
+          </label>
+        </div>
+      </section>
+
+      <section id="arena" class="arena" aria-label="3D 跑酷游戏区域">
+        <div id="runner" class="runner running" aria-label="跑酷人物" role="img"></div>
+        <div class="ground" aria-hidden="true"></div>
+        <p id="hint" class="hint">方向键/WASD 控制；空格或↑跳跃；↓下蹲/速降。支持 F 键切换全屏。</p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
